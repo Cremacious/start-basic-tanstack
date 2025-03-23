@@ -1,13 +1,15 @@
-/// <reference types="vinxi/types/server" />
 import {
   createStartHandler,
   defaultStreamHandler,
-} from '@tanstack/react-start/server'
-import { getRouterManifest } from '@tanstack/react-start/router-manifest'
+} from "@tanstack/start/server";
 
-import { createRouter } from './router'
+import { createClerkHandler } from "@clerk/tanstack-start/server";
+import { createRouter } from "./router";
+import { getRouterManifest } from "@tanstack/start/router-manifest";
 
-export default createStartHandler({
-  createRouter,
-  getRouterManifest,
-})(defaultStreamHandler)
+export default createClerkHandler(
+  createStartHandler({
+    createRouter,
+    getRouterManifest,
+  })
+)(defaultStreamHandler);
